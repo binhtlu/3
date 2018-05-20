@@ -64,20 +64,41 @@ public:
         
      
         
-        friend ostream& operator <<(ostream& os, PhanSo a);
+        friend ostream& operator <<(ostream& os, PhanSo a)
+        {
+        	os<<a.tuso<<"/"<<a.mauso;
+        }
+operator int()
+{
+	return this->tuso/this->mauso;
+}
+operator float()
+{
+	return this->tuso/(float)this->mauso;
+}
+
+
+friend PhanSo operator + (int a, PhanSo b)
+{
+	return PhanSo(a*b.mauso + b.tuso,b.mauso);
+}
         
 };
 
-ostream& operator<<(ostream& os, PhanSo a)
-{
-        os<< a.tuso <<"/ "<<a.mauso<<endl;
-}
 
 int main()
 {
-        PhanSo a(1,4);
-        PhanSo b(1,6);
+		int x,y,z,t;
+		cout<<"Nhap:    "<<endl;
+		cin>>x;
+		cin>>y;
+		cin>>z;
+		cin>>t;
+        PhanSo a(x,y);
+        PhanSo b(z,t);
         cout<<a+b<<endl;
+ 		a = 10 + a;
+ 		cout<<a<<endl;      
         return 0;
         
 }
